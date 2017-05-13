@@ -1,0 +1,35 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+
+
+    <body>
+        <div>
+            <h1>Your Item is {{ searchStr }}</h1>
+        </div>
+        <form action="{% url 'buzzni:search' %}" method="get" style="margin-left: 0 auto; margin-right: 0 auto; display: inline-block;">
+            <input type="text" name="word" style="width:300px;" />
+            <input type="submit" value="SEARCH" />
+        </form>
+        <div class="container">
+            <div class="row">
+                {% for imglnk in imageLink %}
+                <div class="col-md-4">
+
+                    <div class="product-chip">
+                        <a href="{{ imglnk.1 }}"><img src="{{ imglnk.0 }}" class="img-thumbnail" alt width="300" height="300"></a>
+                        <br><br>
+                        <p>{{imglnk.2}}</p>
+                        <p>{{imglnk.3}}</p>
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
